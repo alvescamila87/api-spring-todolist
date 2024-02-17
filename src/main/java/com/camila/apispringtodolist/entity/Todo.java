@@ -23,4 +23,11 @@ public class Todo {
     private String description;
     private boolean done;
     private int priority;
+
+    public Todo(String name, String description, boolean done, int priority) {
+        this.name = name;
+        this.description = description;
+        this.done = done;
+        this.priority = priority;
+    }
 }

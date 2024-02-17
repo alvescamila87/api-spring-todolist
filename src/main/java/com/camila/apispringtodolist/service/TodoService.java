@@ -3,6 +3,7 @@ package com.camila.apispringtodolist.service;
 import com.camila.apispringtodolist.entity.Todo;
 import com.camila.apispringtodolist.repository.TodoRepository;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +20,8 @@ public class TodoService {
     }
 
     public List<Todo> listAllTodos() {
-        return todoRepository.findAll();
+        Sort sort = Sort.by("priority").descending().and(Sort.by("name").ascending());
+        return todoRepository.findAll(sort);
     }
 
     public List<Todo> createTodo(Todo todo) {
@@ -32,10 +34,10 @@ public class TodoService {
 
         if(optionalTodo.isPresent()) {
             Todo updateTodo = optionalTodo.get();
-            updateTodo.setName(updateTodo.getName());
-            updateTodo.setDescription(updateTodo.getDescription());
-            updateTodo.setDone(updateTodo.isDone());
-            updateTodo.setPriority(updateTodo.getPriority());
+            updateTodo.setName(todo.getName());
+            updateTodo.setDescription(todo.getDescription());
+            updateTodo.setDone(todo.isDone());
+            updateTodo.setPriority(todo.getPriority());
             todoRepository.save(updateTodo);
         }
         return listAllTodos();
