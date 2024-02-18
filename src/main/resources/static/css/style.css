@@ -1,0 +1,15 @@
+@media (max-width: 992px) {}
+
+.box-container-todo {
+    border: 1px solid #ccc;
+    margin: 60px;
+    padding: 50px;
+}
+
+footer {
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 10px;
+}

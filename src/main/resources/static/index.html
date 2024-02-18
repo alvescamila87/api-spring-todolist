@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+            crossorigin="anonymous"
+    >
+    <title>ToDo List</title>
+</head>
+<body>
+    <header>
+        <h1>
+            ToDo List
+        </h1>
+    </header>
+    <main>
+        <h2>Create a To-Do item</h2>
+        <div class="box-container-todo">       
+            
+            <!-- Form fields -->
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Name</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Type a name to-do...">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Type a description here..."></textarea>
+            </div>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" name="todo_done" id="todo_done">
+                <label class="form-check-label" for="todo_done">Done</label>
+            </div>
+            
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Select a priority...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+        </div>
+
+        <!-- Loading icon -->
+        <div class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+
+        <!-- Data return from API -->
+        <div class="box-result">
+
+        </div>
+
+    </main>
+    <footer>
+        <p>Designed by Camila Alves | Software Developer Backend Java</p>
+        <p>Copyright | 2024 &copy;</p>
+    </footer>    
+</body>
+<script src="js/script.js"></script>
+</html>
