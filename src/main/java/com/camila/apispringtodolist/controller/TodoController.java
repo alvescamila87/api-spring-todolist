@@ -1,10 +1,8 @@
 package com.camila.apispringtodolist.controller;
 
 import com.camila.apispringtodolist.entity.Todo;
-import com.camila.apispringtodolist.repository.TodoRepository;
 import com.camila.apispringtodolist.service.TodoService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

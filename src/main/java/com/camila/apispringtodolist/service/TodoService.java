@@ -2,7 +2,6 @@ package com.camila.apispringtodolist.service;
 
 import com.camila.apispringtodolist.entity.Todo;
 import com.camila.apispringtodolist.repository.TodoRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 

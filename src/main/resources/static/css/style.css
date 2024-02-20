@@ -1,9 +1,16 @@
 @media (max-width: 992px) {}
 
-.box-container-todo {
+.box-container-todo, .box-container-todo-list {
     border: 1px solid #ccc;
     margin: 60px;
     padding: 50px;
+}
+
+.box-container-todo-buttons, .box-container-todo-list-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    padding: 10px 0 0 150px;
 }
 
 footer {

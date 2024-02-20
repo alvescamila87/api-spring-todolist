@@ -20,26 +20,33 @@
     </header>
     <main>
 
-        <div class="box-container-todo">       
+        <div class="box-container-todo">
             
-            <!-- Form fields -->
+            <div class="box-container-todo-tips">
+                <h2>Item To-Do</h2>
+            </div>
+            
+            <!-- Name field -->
             <div class="mb-3">
                 <label for="todo_name_field" class="form-label">Name</label>
-                <input type="email" class="form-control" id="todo_name_field" placeholder="Type a name to-do...">
+                <input type="text" class="form-control" id="todo_name_field" placeholder="Type a name to-do...">
             </div>
 
+            <!-- Description field -->
             <div class="mb-3">
                 <label for="todo_description_field" class="form-label">Description</label>
                 <textarea class="form-control" id="todo_description_field" rows="5" placeholder="Type a description here..."></textarea>
             </div>
 
+            <!-- Done toggle -->
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" name="todo_done" id="todo_done_field">
+                <input class="form-check-input" type="checkbox" role="switch" name="todo_done_field" id="todo_done_field">
                 <label class="form-check-label" for="todo_done_field">Done</label>
             </div>
-            
-            <select class="form-select" aria-label="Default select example">
-                <option selected id="todo_priority_field">Select a priority...</option>
+
+            <!-- Priority field -->
+            <select class="form-select" aria-label="Default select example" name="todo_priority_field" id="todo_priority_field">
+                <option selected name="todo_priority_field">Select a priority...</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -47,21 +54,46 @@
                 <option value="5">5</option>
             </select>
 
-            <div class="box-result">
+            <!-- Buttons from todoList form -->
+            <div class="box-container-todo-buttons">
                 <button type="button" class="btn btn-secondary btn-sm" id="btn-save" onclick="createTodoItem()">Save</button>
                 <button type="button" class="btn btn-secondary btn-sm" id="btn-clean" onclick="cleanFormTodoItem()">Clean</button>
             </div>
 
         </div>
 
-        <!-- Loading icon -->
-        <div class="spinner-grow" role="status">
-            <span class="visually-hidden">Loading...</span>
+        <!-- Search todos by ID -->
+        <div class="box-container-todo-list">
+
+            <div class="box-container-todo-list-tips">
+                <h2>Seach your ToDo</h2>
+            </div>
+
+            <div class="mb-3">
+                <label for="todo_search_field" class="form-label">Search by ID</label>
+                <input type="text" class="form-control" id="todo_search_field" placeholder="Type the ID...">
+            </div>
+
+            <!-- Buttons from todoList form -->
+            <div class="box-container-todo-list-buttons">
+                <button type="button" class="btn btn-secondary btn-sm" id="btn-save" onclick="searchByID()">Search</button>
+                <button type="button" class="btn btn-secondary btn-sm" id="btn-clean" onclick="cleanID()">Clean</button>
+            </div>
         </div>
 
-        <!-- Data return from API -->
-        <div class="box-result">
-            <button type="button" class="btn btn-secondary btn-sm">Back </button>
+        <!-- Loading icon -->
+        <div class="spinner-grow" role="status">
+            <span class="visually-hidden" id="spinner">Loading...</span>
+        </div>
+
+        <!-- Data return from API listing todos from the list -->
+        <div class="box-result-all-todos">
+            <button type="button" class="btn btn-secondary btn-sm">Back</button>
+        </div>
+
+        <!-- Data return from API listing just that one created -->
+        <div class="box-result-todo-created">
+            <button type="button" class="btn btn-secondary btn-sm">Back</button>
         </div>
 
     </main>
