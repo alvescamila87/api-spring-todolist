@@ -12,9 +12,22 @@ function createTodoItem() {
     var todo_done = document.getElementById('todo_done_field').checked;
     var todo_priority = document.getElementById('todo_priority_field').value;
 
+    var todoData = {
+        name: todo_name,
+        description: todo_description,
+        done: todo_done,
+        priority: todo_priority
+    };
+
     const apiURLPost = 'http://localhost:8080/todos'; 
 
-    fetch(apiURL)
+    fetch(apiURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(todoData)
+    })
         .then(response => response.json())
         .then(data => itemTodoResult(data))
         .catch(error => console.error('Error to create an item: ', error))
@@ -36,5 +49,8 @@ function cleanID() {
 }
 
 function itemTodoResult(result) {
+
+    var boxResultTodoCreated = document.querySelector('.box-result-todo-created');
+    boxResultTodoCreated.innerHTML = '<p>Todo created: ' + data.name + '</p>';
     
 }
