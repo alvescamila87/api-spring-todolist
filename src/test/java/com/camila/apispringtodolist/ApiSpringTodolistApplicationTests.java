@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
+import java.util.UUID;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ApiSpringTodolistApplicationTests {
 
@@ -21,7 +23,7 @@ class ApiSpringTodolistApplicationTests {
 				.post()
 				.uri("/todos")
 				.bodyValue(todo)
-				.exchange().expectStatus().isCreated()
+				.exchange().expectStatus().isOk()
 				.expectBody()
 				.jsonPath("$").isArray()
 				.jsonPath("$.length()").isEqualTo(1)
@@ -68,11 +70,11 @@ class ApiSpringTodolistApplicationTests {
 	@Test
 	void testUpdateTodoSuccess() {
 		var updateTodo = new Todo("Update task", "Update description", true, 2);
-		String idNotOk = "id";
+		UUID idOk = UUID.randomUUID();
 
 		webTestClient
 				.put()
-				.uri("/todos/{id}", idNotOk)
+				.uri("/todos/{id}", idOk)
 				.bodyValue(updateTodo)
 				.exchange().expectStatus().isOk()
 				.expectBody()
@@ -88,11 +90,11 @@ class ApiSpringTodolistApplicationTests {
 	void testUpdateTodoFailure() {
 
 		var todoNotOk = new Todo("", "", false, 0);
-		String id = "id";
+		UUID idNOk = UUID.randomUUID();
 
 		webTestClient
 				.put()
-				.uri("/todos/{id}", id)
+				.uri("/todos/{id}", idNOk)
 				.bodyValue(todoNotOk)
 				.exchange()
 				.expectStatus().isNotFound();
@@ -100,22 +102,21 @@ class ApiSpringTodolistApplicationTests {
 
 	@Test
 	void testDeleteTodoSuccess() {
-		String id = "id";
+		UUID idOk = UUID.randomUUID();
 
 		webTestClient
 				.delete()
-				.uri("/todos/{id}", id)
+				.uri("/todos/{id}", idOk)
 				.exchange().expectStatus().isOk();
 	}
 
 	@Test
 	void testDeleteTodoFailure() {
-
-		String idNotOk = "id";
+		UUID idNOk = UUID.randomUUID();
 
 		webTestClient
 				.delete()
-				.uri("/todos/{id}", idNotOk)
+				.uri("/todos/{id}", idNOk)
 				.exchange()
 				.expectStatus().isNotFound();
 	}

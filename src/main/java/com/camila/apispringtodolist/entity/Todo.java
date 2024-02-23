@@ -1,6 +1,7 @@
 package com.camila.apispringtodolist.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,9 +18,9 @@ public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID ID;
-    @Column(nullable = false)
+    @NotBlank
     private String name;
-    @Column(nullable = false)
+    @NotBlank
     private String description;
     private boolean done;
     private int priority;
