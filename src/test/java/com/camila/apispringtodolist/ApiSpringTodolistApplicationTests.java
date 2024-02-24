@@ -70,7 +70,7 @@ class ApiSpringTodolistApplicationTests {
 	@Test
 	void testUpdateTodoSuccess() {
 		var updateTodo = new Todo("Update task", "Update description", true, 2);
-		UUID idOk = UUID.randomUUID();
+		UUID idOk = UUID.fromString("c8c781bf-d506-4b03-8555-9604cc14507a");
 
 		webTestClient
 				.put()
@@ -102,7 +102,7 @@ class ApiSpringTodolistApplicationTests {
 
 	@Test
 	void testDeleteTodoSuccess() {
-		UUID idOk = UUID.randomUUID();
+		UUID idOk = UUID.fromString("c8c781bf-d506-4b03-8555-9604cc14507a");
 
 		webTestClient
 				.delete()

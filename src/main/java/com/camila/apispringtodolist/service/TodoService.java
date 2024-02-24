@@ -1,6 +1,7 @@
 package com.camila.apispringtodolist.service;
 
 import com.camila.apispringtodolist.entity.Todo;
+import com.camila.apispringtodolist.error.TodoNotFoundException;
 import com.camila.apispringtodolist.repository.TodoRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -28,21 +29,29 @@ public class TodoService {
         return listAllTodos();
     }
 
-    public List<Todo> updateTodoById(Todo todo, UUID id) {
+    public Todo updateTodoById(Todo todo, UUID id) throws TodoNotFoundException {
         Optional<Todo> optionalTodo = todoRepository.findById(id);
 
-        if(optionalTodo.isPresent()) {
-            Todo updateTodo = optionalTodo.get();
-            updateTodo.setName(todo.getName());
-            updateTodo.setDescription(todo.getDescription());
-            updateTodo.setDone(todo.isDone());
-            updateTodo.setPriority(todo.getPriority());
-            todoRepository.save(updateTodo);
+        if(!optionalTodo.isPresent()) {
+            throw new TodoNotFoundException("Todo not found, ID: " + id);
         }
-        return listAllTodos();
+
+        Todo updateTodo = optionalTodo.get();
+        updateTodo.setName(todo.getName());
+        updateTodo.setDescription(todo.getDescription());
+        updateTodo.setDone(todo.isDone());
+        updateTodo.setPriority(todo.getPriority());
+
+        return todoRepository.save(updateTodo);
     }
 
-    public List<Todo> deleteTodoById(UUID id) {
+    public List<Todo> deleteTodoById(UUID id)  throws TodoNotFoundException {
+        Optional<Todo> optionalTodo = todoRepository.findById(id);
+
+        if(!optionalTodo.isPresent()) {
+            throw new TodoNotFoundException("Todo not found, ID: " + id);
+        }
+
         todoRepository.deleteById(id);
         return listAllTodos();
     }
