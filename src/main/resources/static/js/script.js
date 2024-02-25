@@ -60,11 +60,20 @@ function cleanID() {
 function itemTodoResult(result) {
     var boxResultTodoCreated = document.querySelector('.box-result-todo-created');
 
-    boxResultTodoCreated.innerHTML = '<h4> ToDo item created: </h4>';
-    boxResultTodoCreated.innerHTML = '<p>ID: ' + result.id + '</p>';
-    boxResultTodoCreated.innerHTML = '<p>Name: ' + result.name + '</p>';
-    boxResultTodoCreated.innerHTML = '<p>Description: ' + result.description + '</p>';
-    boxResultTodoCreated.innerHTML = '<p>Done: ' + result.done + '</p>';
-    boxResultTodoCreated.innerHTML = '<p>Priority: ' + result.priority + '</p>';
+    if(result && result.id && result.name && result.description && result.done !== undefined && result.priority !== undefined) {
+
+        boxResultTodoCreated.innerHTML = '<h4> ToDo item created: </h4>' + '<p>ID: ' + result.id  + '</p>'
+                                            + '<p>Name: ' + result.name + '</p>'
+                                            + '<p>Description: ' + result.description + '</p>'
+                                            + '<p>Done: ' + result.done + '</p>'
+                                            + '<p>Priority: ' + result.priority + '</p>';
+
+    } else {
+
+        console.error('Error to return data from ToDo Item: ', result);
+        boxResultTodoCreated.innerHTML = '<p>Error when processing data from item ToDo. </p>';
+    }
+
+
     
 }
