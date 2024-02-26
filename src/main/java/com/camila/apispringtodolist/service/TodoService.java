@@ -24,9 +24,9 @@ public class TodoService {
         return todoRepository.findAll(sort);
     }
 
-    public List<Todo> createTodo(Todo todo) {
-        todoRepository.save(todo);
-        return listAllTodos();
+    public Todo createTodo(Todo todo) {
+        Todo createdTodo = todoRepository.save(todo);
+        return createdTodo;
     }
 
     public Todo updateTodoById(Todo todo, UUID id) throws TodoNotFoundException {

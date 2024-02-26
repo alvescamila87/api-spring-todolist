@@ -29,7 +29,7 @@ public class TodoController {
     }
 
     @PostMapping
-    List<Todo> createTodo(@RequestBody @Valid Todo todo) {
+    Todo createTodo(@RequestBody @Valid Todo todo) {
         return todoService.createTodo(todo);
     }
 

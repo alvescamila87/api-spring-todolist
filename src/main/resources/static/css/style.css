@@ -1,6 +1,6 @@
 @media (max-width: 992px) {}
 
-.box-container-todo, .box-container-todo-list {
+.box-container-todo, .box-container-todo-list, .box-result-todo-created {
     border: 1px solid #ccc;
     margin: 60px;
     padding: 50px;
